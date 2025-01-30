@@ -8,12 +8,14 @@ import {
   Typography,
 } from "antd";
 
-function MyPost() {
+function MyPost(props) {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
+    props.addPost(values.newPost);
     console.log("Success:", values);
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -36,7 +38,7 @@ function MyPost() {
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
+        // autoComplete="off"
         form={form}
       >
         <Form.Item
@@ -53,11 +55,7 @@ function MyPost() {
         </Form.Item>
 
         <Form.Item label={null}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            onClick={() => form.resetFields()}
-          >
+          <Button type="primary" htmlType="submit">
             Send new post
           </Button>
         </Form.Item>

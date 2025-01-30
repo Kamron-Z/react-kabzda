@@ -1,5 +1,6 @@
 import {Flex, Menu} from "antd";
 import Post from "../Profile/Post";
+import { useNavigate } from "react-router";
 
 const items = [
     {
@@ -32,9 +33,9 @@ const items = [
 
 
 export function Dialogs() {
-
-    function onClick() {
-        console.log('click dialogs')
+    const navigator = useNavigate()
+    function onClick(e) {
+        navigator('/dialogs/' + e.key, { replace: true });
     }
 
     return (
@@ -52,8 +53,8 @@ export function Dialogs() {
                 />
             </div>
             <div className={'messages-item'} style={{padding: '10px', width: '50%', background: 'greenyellow'}}>
-                <Post messege={'Privet'}/>
-                <Post messege={'Privet'}/>
+                <Post postsData={'Privet'}/>
+                <Post postsData={'Privet'}/>
             </div>
         </Flex>
     )

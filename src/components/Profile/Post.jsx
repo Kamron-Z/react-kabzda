@@ -9,7 +9,9 @@ import {
 } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
-function Post({messege}) {
+
+
+function Post( {postsData} ) {
   return (
     <div
       style={{
@@ -20,7 +22,10 @@ function Post({messege}) {
       }}
     >
       <Avatar shape="square" size={40} icon={<UserOutlined />} />
-      <Typography>{messege}</Typography>
+      <div>
+        <Typography>{postsData.message}</Typography>
+        <Typography>Like: {postsData.likeCount}</Typography>
+      </div>
     </div>
   );
 }
